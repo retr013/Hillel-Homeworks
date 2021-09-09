@@ -1,24 +1,25 @@
 const button = document.querySelector('button');
-const name_input = document.querySelector('[name="name"]');
-const sname_input = document.querySelector('[name="sname"]');
-const phone_input = document.querySelector('[name="phone"]');
+const nameInput = document.querySelector('[name="name"]');
+const snameInput = document.querySelector('[name="sname"]');
+const phoneInput = document.querySelector('[name="phone"]');
 const container = document.querySelector('.commentsContainer');
+const strValidation = /^[а-яА-Яa-zA-Z\s]+$/
+const intValidation = /^[0-9]+$/
 
 button.addEventListener('click', () => {
-    if (phone_input.value.match(/^[0-9]+$/) === null) {
+    if (!intValidation.test(phoneInput.value)) {
         return alert('Invalid phone number')
     }
-    if (!/^[а-яА-Яa-zA-Z\s]+$/.test(name_input.value)) {
+    if (!strValidation.test(nameInput.value)) {
         return alert('Invalid name')
     }
-    if (!/^[а-яА-Яa-zA-Z\s]+$/.test(sname_input.value)) {
+    if (!strValidation.test(snameInput.value)) {
         return alert('Invalid surname')
     }
-    let message = `${name_input.value}, ${sname_input.value}, ${phone_input.value}`;
-    console.log(message);
+
+    let message = `${nameInput.value}, ${snameInput.value}, ${phoneInput.value}`;
     let h3 = document.createElement('h3');
     h3.innerText = message;
-    if (message) {
-        container.append(h3)
-    }
+
+    container.append(h3)
 });
