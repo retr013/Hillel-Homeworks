@@ -22,4 +22,8 @@ button.addEventListener('click', () => {
     h3.innerText = message;
 
     container.append(h3)
+
+    nameInput.value = '';
+    snameInput.value = '';
+    phoneInput.value = '';
 });
