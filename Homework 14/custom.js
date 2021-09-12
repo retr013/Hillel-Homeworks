@@ -99,3 +99,8 @@ addContact({
     surname: 'Vh',
     phone: 123
 })
+addContact({
+    name: 'Alex4',
+    surname: 'Vh',
+    phone: 123
+})
