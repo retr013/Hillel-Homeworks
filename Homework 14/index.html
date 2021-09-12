@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <script async src="custom.js"></script>
+    <title>hw14</title>
+</head>
+<body>
+<h1>hw14</h1>
+<form id="NewContactForm" class="form">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="contactsList"></tbody>
+        <tfoot>
+        <tr>
+            <td><input type="text" placeholder="Name" name="name" id="name" class="form-input"></td>
+            <td><input type="text" placeholder="Surname" name="surname" id="surname" class="form-input"></td>
+            <td><input type="text" placeholder="Phone" name="phone" id="phone" class="form-input"></td>
+            <td>
+                <button id="addContactBtn">Add contact</button>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</form>
+<script type="text/template" id="contactTemplate">
+    <tr class="contact-row">
+        <td>{{name}}</td>
+        <td>{{surname}}</td>
+        <td>{{phone}}</td>
+        <td><button type="button" class="delete-btn">Delete</button></td>
+        <td><button type="button" class="done-btn">Done</button></td>
+    </tr>
+</script>
+</body>
+</html>
