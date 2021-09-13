@@ -8,10 +8,10 @@ const contactRow = '.contact-row'
 const deleteButton = 'delete-btn'
 const doneButton = 'done-btn'
 
-form.addEventListener('submit', submitForm);
+form.addEventListener('submit', onSubmitForm);
 form.addEventListener('click', onContactListClick)
 
-function submitForm(e) {
+function onSubmitForm(e) {
     e.preventDefault();
 
     const inputsInfo = getContact();
@@ -33,11 +33,15 @@ function onContactListClick(e) {
     }
     if (e.target.classList.contains(doneButton)) {
         const el = e.target.closest(contactRow);
-        if (el.style.background !== 'green') {
-            el.style.background = 'green'
-        } else {
-            el.style.background = 'initial'
-        }
+        giveColor(el)
+    }
+}
+
+function giveColor(el) {
+    if (el.style.background !== 'green') {
+        el.style.background = 'green'
+    } else {
+        el.style.background = 'initial'
     }
 }
 
