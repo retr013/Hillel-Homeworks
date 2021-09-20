@@ -1,29 +1,38 @@
-const button = document.querySelector('button');
-const nameInput = document.querySelector('[name="name"]');
-const snameInput = document.querySelector('[name="sname"]');
-const phoneInput = document.querySelector('[name="phone"]');
-const container = document.querySelector('.commentsContainer');
-const strValidation = /^[а-яА-Яa-zA-Z\s]+$/
-const intValidation = /^[0-9]+$/
+const images = document.querySelectorAll('.img500x500')
+const carousel = document.querySelector('.img-carousel')
+const rightArrow = document.querySelector('.arrow-right')
+const leftArrow = document.querySelector('.arrow-left')
+carousel.style.marginLeft = 0;
+let margin = 0;
 
-button.addEventListener('click', () => {
-    if (!intValidation.test(phoneInput.value)) {
-        return alert('Invalid phone number')
+carousel.addEventListener('click', imgCarousel)
+
+function imgCarousel(e) {
+    if (e.target.classList.contains("arrowRight")) {
+        if (!countMarginRight()) {
+            margin -= 220;
+            carousel.style.marginLeft = margin.toString() + 'px'
+        }
     }
-    if (!strValidation.test(nameInput.value)) {
-        return alert('Invalid name')
+    if (e.target.classList.contains("arrowLeft")) {
+        if (!countMarginLeft()) {
+            margin += 220;
+            carousel.style.marginLeft = margin.toString() + 'px'
+        }
     }
-    if (!strValidation.test(snameInput.value)) {
-        return alert('Invalid surname')
-    }
+}
 
-    let message = `${nameInput.value}, ${snameInput.value}, ${phoneInput.value}`;
-    let h3 = document.createElement('h3');
-    h3.innerText = message;
+function countMarginRight() {
+    let minMargin = (3 - images.length) * 220;
+    let minMarginStr = minMargin.toString() + 'px';
+    console.log(carousel.style.marginLeft, 'carousel style');
+    console.log(minMarginStr, 'minmarginstr');
+    return carousel.style.marginLeft === minMarginStr;
+}
 
-    container.append(h3)
-
-    nameInput.value = '';
-    snameInput.value = '';
-    phoneInput.value = '';
-});
+function countMarginLeft() {
+    let minMargin = '0px';
+    console.log(carousel.style.marginLeft, 'carousel style');
+    console.log(minMargin, 'minmargin');
+    return carousel.style.marginLeft === minMargin;
+}
