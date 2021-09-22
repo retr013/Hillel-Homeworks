@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background: rgb(83, 83, 83);
+}
+
 .img500x500 {
     width: 100%;
     max-width: 200px;
@@ -23,40 +27,43 @@
     width: 100%;
     display: flex;
     gap: 20px;
+    transition: 0.3s ease-in-out;
 }
 
-.container::before {
-    content: '<--';
+.arrowLeft {
     position: absolute;
     left: 10px;
     background: white;
     padding: 5px;
     border-radius: 10px;
     top: 50%;
+    cursor: pointer;
+    user-select: none;
 }
 
-.container::before:hover {
-    opacity: 80%;
+.arrowLeft:hover {
+    opacity: 70%;
 }
 
-.container::before:active {
+.arrowLeft:active {
     opacity: 40%;
 }
 
-.container::after {
-    content: '-->';
+.arrowRight {
     position: absolute;
     right: 10px;
     background: white;
     padding: 5px;
     border-radius: 10px;
     top: 50%;
+    cursor: pointer;
+    user-select: none;
 }
 
-.container::after:hover {
-    opacity: 80%;
+.arrowRight:hover {
+    opacity: 70%;
 }
 
-.container::before:active {
+.arrowRight:active {
     opacity: 40%;
 }
