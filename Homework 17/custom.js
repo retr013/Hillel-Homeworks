@@ -1,69 +1,80 @@
-function Hamburger(type) {
-    this.type = type;
-    this.price = type.price;
-    this.calories = type.calories;
+class Group {
+    #students;
+
+    constructor() {
+        this.#students = [];
+    }
+
+    addStudent(student) {
+        if(this.#studentValidator(student)) {
+            this.#students.push(student);
+        }
+    }
+
+    #studentValidator(student) {
+        return student instanceof Student;
+    }
+
+    get students() {
+        return this.#students;
+    }
+
+    getAverageMark() {
+        let groupMark = 0;
+
+        for(let student of this.#students) {
+            const studentAverageMark = student.getAverageMark();
+            groupMark += studentAverageMark;
+        }
+        const groupAverageMark = groupMark / this.#students.length;
+
+        return groupAverageMark;
+    }
 }
 
-Hamburger.prototype.getCalories = function () {
-    return this.calories;
+class Student {
+    constructor(name, mark) {
+        this.name = name;
+        this.mark = mark;
+    }
+
+    getAverageMark() {
+        let marksOverall = 0
+        for (let i in this.mark) {
+            marksOverall += this.mark[i]
+        }
+
+        if (!marksOverall) {
+            return 0;
+        }
+
+        return marksOverall / this.mark.length;
+    }
 }
 
-Hamburger.prototype.getPrice = function () {
-    return this.price;
-}
+const group = new Group();
 
-Hamburger.prototype.addTopping = function (topping) {
-    this.price += topping.price;
-    this.calories += topping.calories;
-}
+group.addStudent(new Student('John', [10, 8]));
+group.addStudent(new Student('Alex', [10, 9]));
+group.addStudent(new Student('Bob', [6, 10]));
 
-Hamburger.SIZE_SMALL = {
-    price: 50,
-    calories: 20
-}
+console.log(group.students.length === 3);
+group.addStudent({});
+console.log(group.students.length === 3);
 
-Hamburger.SIZE_MEDIUM = {
-    price: 75,
-    calories: 30
-}
+console.log(group.getAverageMark() === (10 + 8 + 10 + 9 + 6 + 10) / 6);
 
-Hamburger.SIZE_LARGE = {
-    price: 100,
-    calories: 40
-}
 
-Hamburger.TOPPING_MAYO = {
-    price: 20,
-    calories: 5
-}
+Array.prototype.max = function() {
+    let max = this[0];
 
-Hamburger.TOPPING_POTATO = {
-    price: 15,
-    calories: 10
-}
+    for (let i = 1; i < this.length; i++) {
+        if (this[i] > max) {
+            max = this[i];
+        }
+    }
 
-Hamburger.TOPPING_CHEESE = {
-    price: 10,
-    calories: 20
-}
+    return max;
+};
 
-Hamburger.TOPPING_LETTUCE = {
-    price: 20,
-    calories: 5
-}
-
-Hamburger.TOPPING_PRIPRAVA = {
-    price: 15,
-    calories: 0
-}
-
-const hamburger = new Hamburger(Hamburger.SIZE_SMALL);
-
-hamburger.addTopping(Hamburger.TOPPING_MAYO);
-console.log('Price with sauce: ' + hamburger.getPrice());
-console.log('Calories with sauce: ' + hamburger.getCalories());
-
-hamburger.addTopping(Hamburger.TOPPING_POTATO);
-console.log('Price with sauce: ' + hamburger.getPrice());
-console.log('Calories with sauce: ' + hamburger.getCalories());
-
+[6, 5, 8, 7].max();
