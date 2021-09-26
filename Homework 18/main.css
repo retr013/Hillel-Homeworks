@@ -12,8 +12,34 @@ h1 {
     display: flex;
     width: 100%;
     max-width: 600px;
+    position: relative;
 }
 
 .tabs-item {
+    width: 200px;
+}
 
+.tabs-header {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out background, border;
+}
+
+.tabs-content {
+    position: absolute;
+    left: 5px;
+    top: 50px;
+    width: 600px;
+    display: none;
+}
+
+.on-tab {
+    background: cornflowerblue;
+    border-bottom: none;
+}
+
+.content-reveal {
+    display: initial;
 }
