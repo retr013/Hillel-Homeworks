@@ -23,8 +23,7 @@ class Group {
         let groupMark = 0;
 
         for(let student of this.#students) {
-            const studentAverageMark = student.getAverageMark();
-            groupMark += studentAverageMark;
+            groupMark += student.getAverageMark();
         }
         const groupAverageMark = groupMark / this.#students.length;
 
@@ -40,8 +39,8 @@ class Student {
 
     getAverageMark() {
         let marksOverall = 0
-        for (let i in this.mark) {
-            marksOverall += this.mark[i]
+        for (let mark of this.mark) {
+            marksOverall += mark
         }
 
         if (!marksOverall) {
