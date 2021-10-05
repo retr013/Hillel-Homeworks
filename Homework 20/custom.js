@@ -29,7 +29,6 @@ function getUserUrl(userName) {
 
 function getGitUser(request) {
     return fetch(request)
-        // .then((data) => data.json())
         .then((data) => {
             if (data.ok) {
                 return data.json()
