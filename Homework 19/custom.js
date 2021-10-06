@@ -1,5 +1,4 @@
-// Задача 1
-
+//1
 var x = 10;
 var obj = {x: 15};
 
@@ -12,8 +11,7 @@ fun();
 fun.call(obj);
 
 
-// Задача 2
-
+//2
 var person = {
     firstName:"John",
     lastName: "Konor",
@@ -29,9 +27,7 @@ var user = {
 alert(person.fullName.call(user));
 
 
-// Задача 3
-
-
+//3
 var tester = function(a, b, c) {
     alert(Object.getOwnPropertyNames(arguments));
 };
