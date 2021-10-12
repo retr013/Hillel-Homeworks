@@ -1,10 +1,20 @@
-const form = document.querySelector('#NewContactForm');
-const input = document.querySelector('.form-input');
-const infoTemplate = document.querySelector('#contactTemplate').innerHTML;
-const list = document.querySelector('#contactsList')
-const contactRow = '.contact-row'
-const deleteButton = 'delete-btn'
-const doneButton = 'done-btn'
+const SELECTOR = Object.freeze({
+    FORM: '#NewContactForm',
+    INPUT: '.form-input',
+    TEMPLATE: '#contactTemplate',
+    LIST: '#contactsList',
+    CONTACT_ROW: '.contact-row',
+    DELETE_BTN: 'delete-btn',
+    DONE_BTN: 'done-btn'
+})
+
+const form = document.querySelector(SELECTOR.FORM);
+const input = document.querySelector(SELECTOR.INPUT);
+const infoTemplate = document.querySelector(SELECTOR.TEMPLATE).innerHTML;
+const list = document.querySelector(SELECTOR.LIST);
+const contactRow = SELECTOR.CONTACT_ROW;
+const deleteButton = SELECTOR.DELETE_BTN;
+const doneButton = SELECTOR.DONE_BTN;
 
 form.addEventListener('submit', onSubmitForm);
 list.addEventListener('click', onContactListClick);
@@ -37,12 +47,7 @@ function onContactListClick(e) {
     if (e.target.classList.contains(deleteButton)) {
         const el = e.target.closest(contactRow);
 
-        removeContact(el).then(() => {
-            TodoAPI.getList()
-                .then((el) => addTodoList(el))
-                .catch((error) => alert(error.message));
-        })
-        return;
+        return removeContact(el);
     }
     if (e.target.classList.contains(doneButton)) {
         const el = e.target.closest(contactRow);
@@ -59,7 +64,11 @@ function giveColor(el) {
 }
 
 function removeContact(el) {
-    return TodoAPI.delete(+el.dataset.id)
+    return TodoAPI.delete(+el.dataset.id).then(() => {
+        TodoAPI.getList()
+            .then((el) => addTodoList(el))
+            .catch((error) => alert(error.message));
+    })
 }
 
 function addTodoList(todolist) {
