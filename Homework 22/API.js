@@ -1,7 +1,7 @@
 class TodoAPI {
     static TOKEN = 'e148c90229c863f781e87e32c41207b11ec37b96e84aee0a085cf9be1d8c67a4';
     static URL = 'https://gorest.co.in/public/v1/todos';
-    static USER_ID = 127;
+    static USER_ID = 504;
     static HEADERS = {
         'Accept': 'application/json',
         'Content-type': 'application/json; charset=UTF-8',
@@ -46,7 +46,9 @@ class TodoAPI {
                     return res.json();
                 }
 
-                throw new Error('Cannot create todo on API')
+                return res.json().then((data) => {
+                    throw new Error('Cannot create todo on API \n' + JSON.stringify(res.data))
+                })
             });
     }
 }

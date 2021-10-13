@@ -16,6 +16,8 @@
     <table>
         <thead>
         <tr>
+            <th>Id</th>
+            <th>Heading</th>
             <th>Article</th>
             <th>Actions</th>
         </tr>
@@ -23,19 +25,30 @@
         <tbody id="contactsList"></tbody>
         <tfoot>
         <tr>
-            <td><input type="text" placeholder="Name" name="name" id="name" class="form-input"></td>
+            <td>
+
+            </td>
+            <td>
+                <input type="text" placeholder="Heading" name="heading" id="heading" class="form-input">
+            </td>
+            <td>
+                <input type="text" placeholder="Article" name="article" id="article" class="form-input">
+            </td>
             <td>
                 <button id="addContactBtn">Add</button>
             </td>
         </tr>
         </tfoot>
     </table>
+    <div class="hidden" id="loading">Loading...</div>
 </form>
 <script type="text/template" id="contactTemplate">
     <tr class="contact-row" data-id="{{todoId}}">
+        <td>{{todoId}}</td>
+        <td>{{title}}</td>
         <td>{{message}}</td>
-        <td><button type="button" class="delete-btn">Delete</button></td>
-        <td><button type="button" class="done-btn">Done</button></td>
+        <td><button type="button" class="delete-btn">&#128465</button></td>
+        <td><button type="button" class="done-btn">✓</button></td>
     </tr>
 </script>
 </body>
