@@ -39,10 +39,12 @@ function onSubmitForm(e) {
     e.preventDefault();
 
     const todo = getTodo();
+
     if (!isTodoValid(todo)) {
         alert('Form is invalid');
         return false;
     }
+
     addTodo(todo);
     clearForm();
 }
@@ -83,7 +85,7 @@ function addTodoList(todolist) {
 function getTodoHTML(todo) {
     return infoTemplate
         .replace('{{title}}', todo.title)
-        .replace('{{message}}', todo.article)
+        .replace('{{message}}', todo.body)
         .replace('{{todoId}}', todo.id)
         .replace('{{todoId}}', todo.id)
 
@@ -98,7 +100,7 @@ function clearForm() {
 function getTodo() {
     return {
         title: input[0].value,
-        article: input[1].value,
+        body: input[1].value,
         status: 'pending',
     };
 }
