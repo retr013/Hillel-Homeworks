@@ -29,6 +29,7 @@ function init() {
             return albumList
         })
         .then(getFirstId)
+        .then(getCovers)
         .catch((error) => {
             alert(error.message)
         })
@@ -50,7 +51,7 @@ function getList() {
 }
 
 function onAlbumListClick(e) {
-    const id = e.target.closest(SELECTOR.ALBUM_ROW).getAttribute('data-id');
+    const id = e.target.closest(SELECTOR.ALBUM_ROW).dataset.id;
     toggleLoadingCover();
     getCovers(id)
 }
@@ -96,7 +97,5 @@ function getAlbumHTML(album) {
 }
 
 function getFirstId(list) {
-    if (list) {
-        getCovers(list[0].id)
-    }
+    return list?.[0]?.id ?? null
 }
