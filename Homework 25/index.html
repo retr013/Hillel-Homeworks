@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script defer src="API.js"></script>
+    <script defer src="custom.js"></script>
+    <title>hw25</title>
+</head>
+<body>
+<h1 class="h1">hw25</h1>
+<button id="addNoteBtn" class="button-primary">Add note</button>
+<hr>
+<div class="container" id="notesContainer"></div>
+<script type="text/template" id="noteTemplate">
+    <div class="noteDiv" data-id="{{id}}">
+        <span class="edit-note-span">Edit</span>
+        <button class="delete-note">X</button>
+        <textarea class="edit-note" name="" id="">{{noteText}}</textarea>
+    </div>
+</script>
+<div id="noteModal" title="Note">
+    <form>
+        <fieldset>
+            <label for="description">Description</label>
+            <input type="text"
+                   name="name"
+                   id="description"
+            >
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>
