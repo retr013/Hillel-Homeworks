@@ -4,17 +4,17 @@ function add(num1, num2) {
 }
 
 function sub(num1, num2) {
-    add_func = require('./sub')
+    sub_func = require('./sub')
     return add_func.sub(num1, num2)
 }
 
 function mult(num1, num2) {
-    add_func = require('./mult')
+    mult_func = require('./mult')
     return add_func.mult(num1, num2)
 }
 
 function div(num1, num2) {
-    add_func = require('./div')
+    div_func = require('./div')
     return add_func.div(num1, num2)
 }
 
