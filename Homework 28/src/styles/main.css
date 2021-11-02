@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.h1 {
+    margin: 20px 10px;
+    font-size: 2em;
+}
+
+.container {
+    display: flex;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.album-row {
+    display: flex;
+    gap: 10px;
+}
+
+.album-row:hover {
+    background: #e8e8e8;
+    cursor: pointer;
+}
+
+.number-p {
+    background: #10ac84;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0 5px;
+    font-size: 1.2em;
+}
+
+.title-p {
+    font-size: 1.2em;
+}
+
+.cover {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+.cover:hover {
+    transform: scale(1.05);
+}
+
+.coverDiv {
+    height: 200px;
+}
+
+.right {
+    display: flex;
+    max-width: 50vw;
+    flex-flow: row wrap;
+    gap: 10px;
+}
