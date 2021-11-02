@@ -4,6 +4,7 @@ const clean = require('gulp-clean');
 const watch = require('gulp-watch');
 const uglify = require('gulp-uglify');
 const uglifycss = require('gulp-uglifycss');
+const browserSync = require('browser-sync').create();
 
 function cleanDist() {
     return src('./dist', {read: false, allowEmpty: true}).pipe(clean())
@@ -31,13 +32,22 @@ function copyCss() {
         .pipe(dest('./dist'));
 }
 
-function watchFiles() {
-    return watch([
-        './src/**/*.js',
-        './src/**/*.css',
-        './src/**/*.html',
-    ], { ignoreInitial: false })
-        .pipe(() => copyJs());
+function watchFiles(cb) {
+    browserSync.init({
+        server: {
+            baseDir: './dist'
+        }
+    });
+
+    watch('./src/**/*.js', series(copyJs, reloadBrowser));
+    watch('./src/**/*.css', series(copyCss, reloadBrowser));
+    watch('./src/**/*.html', series(copyHtml, reloadBrowser));
+    cb()
+}
+
+function reloadBrowser(done) {
+    browserSync.reload();
+    done()
 }
 
 module.exports = {
