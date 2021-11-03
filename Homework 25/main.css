@@ -1,0 +1,39 @@
+hr {
+    margin: 30px 0;
+}
+
+.container {
+    display: flex;
+    gap: 30px;
+}
+
+.noteDiv {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    background: #7ed6df;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.edit-note {
+    background: #7ed6df;
+    border: none;
+    cursor: default;
+}
+
+.edit-note:focus {
+    background: #fff;
+    cursor: initial;
+}
+
+.delete-note {
+    background: #eb4d4b;
+    width: 30px;
+    height: 30px;
+}
+
+.edit-note-span {
+    cursor: pointer;
+    width: fit-content;
+}
